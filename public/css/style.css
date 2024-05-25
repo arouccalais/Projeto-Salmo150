@@ -1,0 +1,402 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: #13072E; /* Cor de fundo do body */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+.logo-text {
+    margin-left: 10px; /* Espaçamento entre o logo e o texto */
+    color: white;
+    font-size: 1.5rem; /* Tamanho do texto */
+    font-family: "Poppins", sans-serif;
+}
+
+.center {
+    display: flex;
+    justify-content: space-between; /* Alinha os elementos ao redor da página */
+    align-items: center;
+    max-width: 1110px;
+    margin: 0 auto;
+    padding: 20px 2%; /* Adiciona um pouco de padding ao redor do cabeçalho */
+}
+
+.cards-align {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .sobre {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Signika Negative', sans-serif;
+    background-color: #B3AAFF;
+    border-radius: 20px;
+    padding: 15px 30px;
+    display: inline-block;
+    left: 45px;
+    position: relative;
+    top: 50px; /* Adiciona um deslocamento de 10 pixels para baixo */
+}
+
+  .texto-sobre {
+    color: #FFFFFF;
+    margin-top: 50px;
+    font-size: 1.3rem;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: center;
+  }
+  
+  .cards-align {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: 50px; /* Adiciona uma margem à esquerda para afastar os cards do contêiner */
+    margin-right: 50px; /* Adiciona uma margem à direita para afastar os cards do contêiner */
+}
+
+.card-sobre {
+    width: 300px;
+    height: 500px;
+    background-image: linear-gradient(135deg, #3F2182, #13072E);
+    margin: 20px; /* Adiciona uma margem ao redor de cada card para separá-los */
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.201);
+}
+  
+  .card-sobre:hover {
+    scale: 1.02;
+    transition: transform 0.3s ease;
+  }
+  
+  .card-content-sobre {
+    padding: 25px;
+  }
+  
+  .card-sobre h2 {
+    font-size: 24px;
+    margin-top: 25px;
+    font-family: 'Signika Negative', sans-serif;
+    color: #E0FFFF;
+  }
+  
+  .card-sobre p {
+    color: #FFFFFF;
+    margin-top: 10px;
+  }
+
+.card-sobre .imagem-ensinar {
+    max-width: 60%; 
+    height: auto; 
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.card-sobre .imagem-sem-fins {
+    max-width: 80%; 
+    height: auto; 
+    border-radius: 20px;
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+.card-voluntario .card-content-sobre {
+    padding: 25px;
+    margin-top: -100px; /* Ajuste conforme necessário */
+}
+
+.card-voluntario .imagem-voluntario {
+    max-width: 110%; 
+    height: auto; 
+    border-radius: 20px;
+    margin-left: -10px;
+    margin-top: -30px;
+}
+
+.menu {
+    padding-top: 30px;
+    width: 50%;
+    text-align: right;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.menu button {
+    border: none;
+    background-color: transparent;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
+
+.menu button:hover {
+    background-color: #ddd;
+    border-radius: 20px;
+}
+
+.container-home {
+    display: flex;
+    align-items: flex-start;
+    height: 600px;
+    background-image: linear-gradient(135deg, #3F2182, #13072E);
+    margin-left: 50px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 2px 0px;
+    overflow: hidden;
+    width: 1400px;
+}
+
+.imghome {
+    background-color: transparent;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imghome img {
+    background-color: transparent;
+    max-width: 200%; 
+    max-height: 100%;
+}
+
+.container-home a {
+    width: 100%;
+}
+
+h1 {
+    background-color: transparent;
+    margin-top: 12px;
+    margin-left: 10%;
+    color: white;
+    font-size: 3rem;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    font-weight: 700;
+    padding-left: 40px;
+    position: relative; /* Adicionado para definir o contexto do pseudo-elemento */
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 46%; /* Ajuste a largura conforme necessário */
+    height: 1px; /* Altura da linha */
+    background-color: white; /* Cor da linha */
+    margin: 4px auto; /* Espaçamento da linha */
+    position: absolute;
+    bottom: -15px; /* Ajuste para a posição vertical da linha */
+    left: 27%; /* Ajuste para centralizar a linha */
+    transform: translateX(-50%); /* Ajuste para centralizar a linha */
+}
+
+
+h3 {
+    background-color: transparent;
+    margin-top: 5px; /* aumenta a margem superior para mover o h3 para baixo */
+    margin-left: 10%; /* aumenta a margem esquerda para mover o h3 para a direita */
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    width: 900px;
+    padding-left: 5%;
+}
+
+.container-home .acaosocial {
+    align-self: flex-start;
+    margin-right: auto;
+    border: none;
+    background-color: #B3AAFF;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: black;
+    border-radius: 20px;
+    margin-left: 13%;
+    margin-top: 100px;
+}
+
+.container-home .conhecamais {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border: none;
+    padding: 18px;
+    font-family: 'Signika Negative', sans-serif;
+    font-weight: 600;
+    margin-left: 15%; /*para o lado direito*/
+    margin-top: 10px;  /*abaixa*/
+    margin-bottom: 50px;
+    cursor: pointer;
+    transition: 0.5s ease; 
+}
+
+.conhecamais {
+    transition: all 0.3s ease;
+    cursor: pointer; /* Altera o cursor para um ponteiro quando hover */
+}
+
+.container-home .conhecamais:hover {
+    background-color: #D8BFD8; /* Altere para a cor desejada quando o cursor estiver sobre o botão */
+    transform: scale(1.05);
+}
+
+.container.pagina-projeto {
+    display: flex;
+    align-items: flex-start;
+    /* height: 600px; */
+    margin-left: 55px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 2px 0px;
+    overflow: hidden;
+    width: 1400px;
+    background: rgb(56,51,136);
+    background: linear-gradient(90deg, rgba(56,51,136,0.9473039215686274) 15%, rgba(83,83,143,0.9585084033613446) 60%, rgba(103,70,236,0.26102941176470584) 100%);
+
+}
+
+.setas {
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows: repeat(4,1fr);
+    grid-auto-flow: column;
+    /* align-items: center;  */
+}
+
+.seta-container {
+    margin-bottom: 50px; /* Espaço entre os contêineres */
+    display: flex;
+    flex-direction: column;
+}
+
+.textoseta{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.setas img {
+    max-width: 90px; /* Defina o tamanho máximo para as setas */
+}
+
+.setas .seta-container {
+    margin-bottom: 40px; /* Espaço entre as setas */
+}
+
+.seta-container {
+    display: flex; 
+    align-items: center; 
+}
+
+
+.h4seta{
+    color: white;
+}
+
+.span-seta{
+    color: white;
+    padding-left: 90px;
+    width: 100%;
+}
+
+.imagens-projeto{
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows: repeat(2,1fr);
+    grid-auto-flow: column;
+}
+
+.imgnicolas img, .imgdani img {
+    max-width: 230px; /* Defina o tamanho máximo desejado */
+    height: auto; /* Mantenha a altura proporcional */
+    border-radius: 20px;
+    margin-top: 40px; /* Desce a imagem 40 pixels */
+    margin-left: 40px; /* Move a imagem 40 pixels para a direita */
+}
+
+.imggu img {
+    max-width: 230px; /* Defina o tamanho máximo desejado */
+    height: auto; /* Mantenha a altura proporcional */
+    border-radius: 20px;
+    margin-top: 40px; /* Desce a imagem 40 pixels */
+    margin-left: 40px; /* Move a imagem 40 pixels para a direita */
+}
+
+.footer {
+    background: rgb(56,51,136);
+    background: linear-gradient(90deg, rgba(56,51,136,0.9473039215686274) 15%, rgba(83,83,143,0.9585084033613446) 60%, rgba(103,70,236,0.26102941176470584) 100%);
+    color: white;
+    padding: 60px 0; /* Aumenta o espaço interno do footer */
+    text-align: center;
+    margin-top: 50px; /* Adiciona margem superior para separar do conteúdo acima */
+}
+
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    width: 100px; /* Defina o tamanho desejado para o logo */
+}
+
+.footer-logo p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #B3AAFF;
+}
+
+.footer-info {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+
+
+

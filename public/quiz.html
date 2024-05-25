@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Salmo 150</title>
+    <link rel="stylesheet" href="./css/quiz.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const quizContainer = document.getElementById('quiz-container');
+            const quizData = [
+                {
+                    question: 'Qual é a nota representada pela letra G?',
+                    options: ['RÉ', 'SOL', 'SI', 'LÁ '],
+                    answer: 'SOL'
+                },
+                {
+                    question: 'A nota SI é representada por qual letra?',
+                    options: ['J', 'D', 'A', 'B'],
+                    answer: 'B'
+                },
+                {
+                    question: 'Qual é a missão do Projeto Salmo 150?',
+                    options: ['Ensinar música', 'Fazer shows', 'Dar aulas de matemática', 'Organizar eventos esportivos'],
+                    answer: 'Ensinar música'
+                },
+                {
+                    question: 'Qual é a nota representada pela letra C?',
+                    options: ['DÓ', 'LÁ', 'MI', 'FÁ'],
+                    answer: 'DÓ'
+                },
+                {
+                    question: 'Qual é a nota representada pela letra D?',
+                    options: ['RÉU', 'MI', 'RÉ', 'SI'],
+                    answer: 'RÉ'
+                },
+                {
+                    question: 'A nota MI é representada por qual letra?',
+                    options: ['M', 'N', 'E', 'L'],
+                    answer: 'E'
+                },
+                {
+                    question: 'A nota FÁ é representada por qual letra?',
+                    options: ['A', 'B', 'F', 'G'],
+                    answer: 'F'
+                },
+                {
+                    question: 'Qual é a nota representada pela letra A?',
+                    options: ['DÓ', 'LÁ', 'MI', 'FÁ'],
+                    answer: 'LÁ'
+                },
+            ];
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+
+            function loadQuestion() {
+                const currentQuestion = quizData[currentQuestionIndex];
+                quizContainer.innerHTML = `
+                    <div class="quiz-question">
+                        <h2>${currentQuestion.question}</h2>
+                    </div>
+                    <div class="quiz-options">
+                        ${currentQuestion.options.map((option, index) => `
+                            <button data-answer="${option}">${option}</button>
+                        `).join('')}
+                    </div>
+                `;
+
+                document.querySelectorAll('.quiz-options button').forEach(button => {
+                    button.addEventListener('click', checkAnswer);
+                });
+            }
+
+            function checkAnswer(event) {
+                const selectedAnswer = event.target.getAttribute('data-answer');
+                if (selectedAnswer === quizData[currentQuestionIndex].answer) {
+                    score++;
+                }
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizData.length) {
+                    loadQuestion();
+                } else {
+                    quizContainer.innerHTML = `<div class="quiz-result">Você acertou ${score} de ${quizData.length} perguntas!</div>`;
+                }
+            }
+
+            loadQuestion();
+        });
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Projeto Salmo 150</h2>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Site</a></li>
+                <li><a href="./memoria.html">Jogo de Memória</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Quiz de Música e Salmo 150</h1>
+        </header>
+        <main>
+            <div id="quiz-container">
+                <!-- Perguntas do quiz serão geradas pelo JavaScript -->
+            </div>
+        </main>
+    </div>
+</body>
+</html>

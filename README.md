@@ -1,2 +1,2 @@
-# Projeto-Salmo150
-Projeto Indiviual - Ação Social Salmo 150
+# Projeto-individual
+Projeto Indiviual - Salmo 150

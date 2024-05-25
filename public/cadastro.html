@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salmos 150 | Cadastro</title>
+    <link rel="stylesheet" href="./css/cadastro.css">
+</head>
+<body>
+    <div class="box">
+        <div class="img-box">
+            <img src="img/fotojuntos.jpeg" alt="fotojuntos">
+        </div>
+        <div class="form-box">
+            <h2>Criar Conta</h2>
+            <p>Já é um membro? <a href="login.html">Login</a></p>
+            <div>
+                <div class="input-group">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" placeholder="Digite o seu nome completo" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Digite o seu E-mail" required>
+                </div>
+                <div class="input-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" placeholder="Digite o seu telefone" required>
+                </div>
+                <div class="input-group w50">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Digite sua senha" required>
+                </div>
+                <div class="input-group w50">
+                    <label for="confirmarsenha">Confirmar Senha</label>
+                    <input type="password" id="confirmarsenha" placeholder="Confirme a senha" required>
+                </div>
+                <div class="input-group">
+                    <button type="button" onclick="cadastrar()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function cadastrar() {
+            // Obtendo os elementos dos campos diretamente pelo id
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const senha = document.getElementById('senha').value;
+            const confirmarsenha = document.getElementById('confirmarsenha').value;
+
+            // Validações básicas
+            if (nome.trim() === "") {
+                alert("Por favor, preencha o nome completo.");
+                return false;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                alert("Por favor, insira um e-mail válido.");
+                return false;
+            }
+
+            if (telefone.trim().length < 10 || telefone.trim().length > 11) {
+                alert("Por favor, insira um telefone válido (10-11 dígitos).");
+                return false;
+            }
+
+            if (senha === "") {
+                alert("Por favor, insira uma senha.");
+                return false;
+            }
+
+            if (senha !== confirmarsenha) {
+                alert("As senhas não coincidem.");
+                return false;
+            }
+
+            alert("Cadastro realizado com sucesso!");
+            // Redirecionar para a página de login após o cadastro
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
