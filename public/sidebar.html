@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Salmo 150</title>
-    <link rel="stylesheet" href="./css/quiz.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
 </head>
 <body>
     <div class="sidebar">
@@ -13,7 +14,6 @@
         <nav>
             <ul>
                 <li><a href="sidebar.html" id="inicio-link">Tela de Inicio</a></li>
-                <li><a href="./login.html">Tela Login</a></li>
                 <li><a href="./memoria.html">Jogo de Memória</a></li>
                 <li><a href="./quiz.html">Quiz</a></li>
             </ul>
@@ -25,7 +25,7 @@
             <p>Bem-vindo ao site do Projeto Salmo 150! Explore nossos jogos educativos.</p>
         </header>
         <main>
-            <div id="inicio-content" class="content-section">
+            <div id="inicio-content" class="content-section active">
                 <canvas id="myChart" width="400" height="400"></canvas>
             </div>
         </main>
@@ -36,7 +36,7 @@
             const inicioContent = document.getElementById('inicio-content');
 
             function showInicioContent() {
-                inicioContent.style.display = 'block';
+                inicioContent.classList.add('active');
             }
 
             inicioLink.addEventListener('click', (event) => {
@@ -80,8 +80,10 @@
                     }
                 }
             });
+
+            // Chamar a função para mostrar o conteúdo de início ao carregar a página
+            showInicioContent();
         });
     </script>
 </body>
 </html>
-

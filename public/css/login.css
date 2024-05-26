@@ -124,7 +124,6 @@ body {
 }
 
 .w50 {
-    width: 50%;
-    float: left;
-    padding-right: 15px;
+    width: 100%;
+    padding-right: 0;
 }
