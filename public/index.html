@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ação Social | Salmo 150</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/fale-conosco.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 </head>
 
@@ -166,6 +167,44 @@
 
     </section>
 
+    <div id="fade" class="hide"></div>
+    <div id="modal" class="hide">
+        <div class="modal-header">
+            <button class="botaoAtivarFale" onclick="esconderModal()" id="close-modal">Fechar</button>
+        </div>
+
+        <!--CORPO MODAL-->
+
+        <div class="modal-body">
+            <div class="imagem-logo">
+                <img src="./assets/img/logobrancofundoroxo.png" alt="">
+            </div>
+            <div class="titulo-formulario">
+                <h3 class="titulo"> Bem Vindo a área de <span class="subtitulo">Fale Conosco!</span> </h3>
+            </div>
+            <div class="imagem-modal">
+                <img src="./assets/img/guteclado.jpeg" alt="">
+            </div>
+
+
+        </div>
+        <div class="modal-informacao">
+            <form action="https://formsubmit.co/arouccalais@gmail.com" method="post">
+                <label for="nome">Nome</label>
+                <input type="text" name="name" id="" placeholder="Digite seu Nome">
+                <br> <br>
+                <label for="">Email</label>
+                <input type="email" name="email" id="" placeholder=" Digite seu Email">
+                <br> <br>
+                <textarea name="message" id="" cols="auto" rows="10"
+                    placeholder="Deixe uma sugestão ou dúvida &#128512;"></textarea>
+                <br> <br>
+                <input class="botao-formulario" type="submit" value="Enviar">
+            </form>
+        </div>
+
+    </div>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
@@ -175,7 +214,7 @@
             <div class="footer-links">
                 <a href="#">Termos de Serviço</a>
                 <a href="#">Política de Privacidade</a>
-                <a href="#">Contato</a>
+                <a id="contact-link" onclick="mostrarModal()">Contato</a>
             </div>
         </div>
         <div class="footer-info">
@@ -189,17 +228,17 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Seleciona o botão de rolagem
+        // botão de rolagem
         const scrollBtn = document.getElementById('scrollBtn');
 
         // Adiciona um ouvinte de evento de clique ao botão
         scrollBtn.addEventListener('click', () => {
-            // Seleciona a seção "Sobre nosso projeto"
+            // "Sobre nosso projeto"
             const sobreSection = document.getElementById('quemsomos');
-            // Obtém a posição da seção em relação ao topo da página
+            // posição da seção em relação ao topo da página
             const sobreSectionPosition = sobreSection.offsetTop;
 
-            // Faz a animação de rolagem suave até a posição da seção
+            // animação de rolagem suave até a posição da seção
             window.scrollTo({
                 top: sobreSectionPosition,
                 behavior: 'smooth' // Faz a rolagem ser suave
@@ -207,7 +246,15 @@
         });
 
 
+        function mostrarModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove("hide");
+        }
 
+        function esconderModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.add("hide");
+        }
 
     </script>
 </body>

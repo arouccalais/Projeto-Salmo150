@@ -1,0 +1,307 @@
+textarea {
+    height: 70px;
+    border-radius: 10px;
+  }
+  
+  
+  input {
+    border-top: white solid 1px;
+    border-right: white solid 1px;
+    border-left: white solid 1px;
+    border-bottom: gray solid 0.5px;
+    /*border-radius: 40px;
+      height: 50px;*/
+  
+    width: 80%;
+  }
+  
+  
+
+  
+  .modal-body .logo-modal img {
+    width: 20%;
+    height: 20%;
+    object-fit: cover;
+  
+  
+    padding-top: 2%;
+  
+  }
+  
+  .modal-body .mensagem-modal h3,
+  span {
+    display: block;
+  
+    font-family: 'Signika Negative', sans-serif;
+  
+  }
+  
+  .modal-body .mensagem-modal span {
+    color: #BEDDED;
+  }
+  
+  .botaoAtivarFale {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+  }
+  
+  #open-modal {
+    background-color: #4A8CD8;
+    border-radius: 10px;
+    border: none;
+    padding: 18px;
+    font-family: 'Signika Negative', sans-serif;
+    font-weight: 600;
+    margin-left: 5%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  #open-modal:hover {
+    background-color: #3083e2;
+    cursor: pointer;
+  }
+  
+  
+  #close-modal {
+    width: 100px;
+    height: 50px;
+  }
+  
+  #fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 5;
+  }
+  
+  #modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    background-color: rgba(0, 0, 0, 0.671);
+    z-index: 10;
+  }
+  
+  #fade,
+  #modal {
+    transition: 0.5s;
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  .modal-body {
+    background: linear-gradient(80deg, #141c80 60%, rgb(36, 86, 144) 100%);
+    height: 80%;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 20px;
+    width: 90%;
+    position: fixed;
+    display: block;
+  }
+  
+  .modal-body .imagem-logo {
+    width: 50%;
+    height: 20%;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .modal-body .imagem-logo img {
+    width: 20%;
+  
+  }
+  
+  .modal-body .titulo-formulario {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    margin-top: -5%;
+  }
+  
+  .titulo-formulario .titulo,
+  .subtitulo {
+    font-size: 1.7rem;
+    text-align: center;
+    width: 100%;
+    object-fit: contain;
+  }
+  
+  .titulo-formulario span {
+    color: #a0d6f1;
+  }
+  
+  .modal-body .imagem-modal {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+  
+  
+    transition: all 2s ease-in-out;
+  
+  }
+  
+  .modal-body .imagem-astrounauta img {
+    width: 100%;
+    animation: animacao 2s infinite ease-in-out;
+    object-fit: contain;
+    height: 80%;
+    margin-top: 5%;
+  
+  }
+  
+  .modal-informacao {
+    background-color: white;
+    width: 50%;
+    height: 80%;
+    float: right;
+    border-radius: 0px 15px 15px 0px;
+    margin-left: 3%;
+    margin-right: 3%;
+    position: relative;
+    padding-left: 5%;
+  }
+  
+  .modal-informacao input {
+    border-bottom: 1px solid black;
+    width: 70%;
+    font-size: 1.0rem;
+    font-family: 'Signika Negative', sans-serif;
+    font-weight: 600;
+  }
+  
+  
+  .modal-informacao label {
+    display: block;
+    padding-top: 3%;
+  
+    font-family: 'Signika Negative', sans-serif;
+  }
+  
+  .modal-informacao input,
+  label {
+    padding-top: 2%;
+  
+  }
+  
+  .modal-informacao input::placeholder {
+    font-size: 0.9rem;
+  }
+  
+  .modal-informacao .botao-formulario {
+    width: 20%;
+    padding: 2%;
+    border-radius: 8px;
+    background-color: transparent;
+    border: 1px solid black;
+    color: Black;
+    transition: 0.5s all ease-in-out;
+    margin-top: 3%;
+  
+  }
+  
+  .modal-informacao .botao-formulario:hover {
+    background-color: #141c80;
+    color: white;
+    border: 1px solid #141c80;
+  
+  }
+  
+  #modal.hide,
+  #fade.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  #modal.hide {
+    top: 0;
+  }
+  
+  
+  @keyframes animacao {
+    0% {
+      transform: translateY(0);
+    }
+  
+    50% {
+      transform: translateY(-10px);
+      transition: all 2s ease-in-out;
+    }
+  
+    100% {
+      transform: translateY(0);
+      transition: all ease-in-out;
+    }
+  
+  }
+  
+  .contato {
+    background: linear-gradient(120deg, rgb(5, 5, 99) 40%, rgb(36, 86, 144) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .titulo1-fale {
+    text-align: left;
+    width: 100%;
+    font-size: 5rem;
+    color: white;
+  }
+  
+  .titulo2-fale {
+    text-align: left;
+    width: 100%;
+    font-size: 3rem;
+    color: white;
+  }
+  
+  .contato img {
+    width: 40%;
+  }
+  
+  .contato a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  @media(max-width: 1065px){
+    .contato img{
+      display: none;
+    }
+  }
+  
+  @media(max-width: 570px){
+    .modal-body{
+      background-color: aqua;
+    }
+  }
+
+  #modal.hide,
+  #fade.hide {
+      opacity: 0;
+      pointer-events: none;
+  }
+  
+

@@ -1,71 +1,43 @@
-var usuarioModel = require("../models/usuarioModel");
-// var aquarioModel = require("../models/aquarioModel");
+const usuarioModel = require('../models/usuarioModel');
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else {
-
-        usuarioModel.autenticar(email, senha)
-            .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
-
-                    if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar);
-                            res.status(200).json(resultadoAutenticar);
-                                    res.json({
-                                        idUsuario: resultadoAutenticar[0].idUsuario,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha
-                                    });
-                            
-                            
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+    if (!email || !senha) {
+        return res.status(400).send("Email ou senha não fornecidos!");
     }
 
+    usuarioModel.autenticar(email, senha)
+        .then(resultado => {
+            if (resultado.length > 0) {
+                return res.json(resultado[0]);
+            } else {
+                return res.status(401).send("Usuário ou senha inválidos!");
+            }
+        })
+        .catch(erro => {
+            console.log("Erro ao autenticar usuário:", erro);
+            return res.status(500).send("Erro interno no servidor");
+        });
 }
 
-
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var telefone = req.body.telefoneServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    }else if (telefone == undefined) {
+    } else if (telefone == undefined) {
         res.status(400).send("Seu telefone está undefined!");
-    }else if (email == undefined) {
+    } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
-
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, telefone,email, senha)
+        usuarioModel.cadastrar(nome, telefone, email, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -73,10 +45,7 @@ function cadastrar(req, res) {
             ).catch(
                 function (erro) {
                     console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
+                    console.log("Houve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
                     res.status(500).json(erro.sqlMessage);
                 }
             );
@@ -84,20 +53,15 @@ function cadastrar(req, res) {
 }
 
 function registrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var idRegistro = req.body.idRegistroServer;
-    var tempo = req.body.tempoServer;
-   
+    var score = req.body.scoreServer;
+    var fkUsuario = req.body.fkUsuarioServer;
 
-    // Faça as validações dos valores
-    if (idRegistro == undefined) {
-        res.status(400).send("Seu id está undefined!");
-    }else if (tempo == undefined) {
-        res.status(400).send("Seu fkUsuario está undefined!");
+    if (score == undefined) {
+        res.status(400).send("Seu score está undefined!");
+    } else if (fkUsuario == undefined) {
+        res.status(400).send("Sua fkUsuario está undefined!");
     } else {
-
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.registrar(idRegistro, tempo)
+        usuarioModel.registrar(score, fkUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -105,10 +69,7 @@ function registrar(req, res) {
             ).catch(
                 function (erro) {
                     console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
+                    console.log("Houve um erro ao registrar a pontuação! Erro: ", erro.sqlMessage);
                     res.status(500).json(erro.sqlMessage);
                 }
             );
@@ -119,4 +80,4 @@ module.exports = {
     autenticar,
     cadastrar,
     registrar
-}
+};

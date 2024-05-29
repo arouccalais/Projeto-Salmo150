@@ -28,127 +28,76 @@
         </main>
     </div>
 </body>
+<script>
+    const quizContainer = document.getElementById('quiz-container');
+    const quizData = [
+        { question: 'Qual é a nota representada pela letra G?', options: ['RÉ', 'SOL', 'SI', 'LÁ'], answer: 'SOL' },
+        { question: 'A nota SI é representada por qual letra?', options: ['J', 'D', 'A', 'B'], answer: 'B' },
+        { question: 'Qual é a missão do Projeto Salmo 150?', options: ['Ensinar música', 'Fazer shows', 'Dar aulas de matemática', 'Organizar eventos esportivos'], answer: 'Ensinar música' },
+        { question: 'Qual é a nota representada pela letra C?', options: ['DÓ', 'LÁ', 'MI', 'FÁ'], answer: 'DÓ' },
+        { question: 'Qual é a nota representada pela letra D?', options: ['RÉU', 'MI', 'RÉ', 'SI'], answer: 'RÉ' },
+        { question: 'A nota MI é representada por qual letra?', options: ['M', 'N', 'E', 'L'], answer: 'E' },
+        { question: 'A nota FÁ é representada por qual letra?', options: ['A', 'B', 'F', 'G'], answer: 'F' },
+        { question: 'Qual é a nota representada pela letra A?', options: ['DÓ', 'LÁ', 'MI', 'FÁ'], answer: 'LÁ' },
+    ];
+
+    let currentQuestionIndex = 0;
+    let scoreVar = 0;
+
+    function loadQuestion() {
+        const currentQuestion = quizData[currentQuestionIndex];
+        quizContainer.innerHTML = `
+            <div class="quiz-question">
+                <h2>${currentQuestion.question}</h2>
+            </div>
+            <div class="quiz-options">
+                ${currentQuestion.options.map((option, index) => `
+                    <button data-answer="${option}">${option}</button>
+                `).join('')}
+            </div>
+        `;
+
+        document.querySelectorAll('.quiz-options button').forEach(button => {
+            button.addEventListener('click', checkAnswer);
+        });
+    }
+
+    function checkAnswer(event) {
+        const selectedAnswer = event.target.getAttribute('data-answer');
+        if (selectedAnswer === quizData[currentQuestionIndex].answer) {
+            scoreVar++;
+        }
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizData.length) {
+            loadQuestion();
+        } else {
+            quizContainer.innerHTML = `<div class="quiz-result">Você acertou ${scoreVar} de ${quizData.length} perguntas!</div>`;
+            sendScoreToServer();
+        }
+    }
+
+    function sendScoreToServer() {
+        const fkUsuarioVar = sessionStorage.ID_USUARIO;
+        console.log(scoreVar);
+        fetch("/usuarios/registrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                scoreServer: scoreVar,
+                fkUsuarioServer: fkUsuarioVar
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Score registered successfully:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+    loadQuestion();
+</script>
 </html>
-    <script>
-        const quizContainer = document.getElementById('quiz-container');
-const quizData = [
-    {
-        question: 'Qual é a nota representada pela letra G?',
-        options: ['RÉ', 'SOL', 'SI', 'LÁ '],
-        answer: 'SOL'
-    },
-    {
-        question: 'A nota SI é representada por qual letra?',
-        options: ['J', 'D', 'A', 'B'],
-        answer: 'B'
-    },
-    {
-        question: 'Qual é a missão do Projeto Salmo 150?',
-        options: ['Ensinar música', 'Fazer shows', 'Dar aulas de matemática', 'Organizar eventos esportivos'],
-        answer: 'Ensinar música'
-    },
-    {
-        question: 'Qual é a nota representada pela letra C?',
-        options: ['DÓ', 'LÁ', 'MI', 'FÁ'],
-        answer: 'DÓ'
-    },
-    {
-        question: 'Qual é a nota representada pela letra D?',
-        options: ['RÉU', 'MI', 'RÉ', 'SI'],
-        answer: 'RÉ'
-    },
-    {
-        question: 'A nota MI é representada por qual letra?',
-        options: ['M', 'N', 'E', 'L'],
-        answer: 'E'
-    },
-    {
-        question: 'A nota FÁ é representada por qual letra?',
-        options: ['A', 'B', 'F', 'G'],
-        answer: 'F'
-    },
-    {
-        question: 'Qual é a nota representada pela letra A?',
-        options: ['DÓ', 'LÁ', 'MI', 'FÁ'],
-        answer: 'LÁ'
-    },
-];
-
-let currentQuestionIndex = 0;
-let score = 0;
-
-function loadQuestion() {
-    const currentQuestion = quizData[currentQuestionIndex];
-    quizContainer.innerHTML = `
-        <div class="quiz-question">
-            <h2>${currentQuestion.question}</h2>
-        </div>
-        <div class="quiz-options">
-            ${currentQuestion.options.map((option, index) => `
-                <button data-answer="${option}">${option}</button>
-            `).join('')}
-        </div>
-    `;
-
-    document.querySelectorAll('.quiz-options button').forEach(button => {
-        button.addEventListener('click', checkAnswer);
-    });
-}
-
-function checkAnswer(event) {
-    const selectedAnswer = event.target.getAttribute('data-answer');
-    if (selectedAnswer === quizData[currentQuestionIndex].answer) {
-        score++;
-    }
-    currentQuestionIndex++;
-    if (currentQuestionIndex < quizData.length) {
-        loadQuestion();
-    } else {
-        quizContainer.innerHTML = `<div class="quiz-result">Você acertou ${score} de ${quizData.length} perguntas!</div>`;
-        sendScoreToServer();
-    }
-}
-
-function sendScoreToServer() {
-    const fkUsuario = sessionStorage.getItem('ID_USUARIO');
-
-    fetch("/usuarios/registrar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            scoreServer: score,
-            fkUsuarioServer: fkUsuario
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Score registered successfully:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-}
-
-loadQuestion();
-
-
-        var fkUsuario = sessionStorage.ID_USUARIO;
-
-            fetch("/usuarios/registrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          idRegistroServer : idRegistro,
-          tempoServer : tempo
-        }),
-      })
-        ;
-
-
-    </script>
