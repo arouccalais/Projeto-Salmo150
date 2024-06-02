@@ -8,7 +8,6 @@
 }
 
 body {
-    background-image: linear-gradient(135deg, #3F2182, #13072E);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -17,6 +16,66 @@ body {
     justify-content: center;
     padding: 20px;
     min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 136, 0.2), transparent 70%);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.decorative-shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: floatShape 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.shape-1 {
+    width: 100px;
+    height: 100px;
+    top: 4%;
+    left: 3%;
+    animation-duration: 8s;
+    background-color: #616161;
+    z-index: -3;
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 10%;
+    right: 4%;
+    animation-duration: 10s;
+    background-color: #616161;
+    z-index: -3;
+}
+
+@keyframes floatShape {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 .box {
@@ -35,23 +94,55 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    background-color: #13072E;
 }
 
 .img-box img {
     width: 80%;
     border-radius: 20px;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .img-box img:hover {
     transform: scale(1.05);
 }
+.img-box .content h1{
+    color: white;
+    text-align: center;
+    position: relative;
+    top: -2rem;
+}
+.img-box .content p{
+    text-align: center;
+    color: #E6007A;
+    font-weight: bold;
+}
+.img-box .content p a{
+    text-align: center;
+    color: #13072E;
+    text-decoration: none;
+    padding: .5rem;
+    position: relative;
+    top: 1rem;
+    border-radius: 10px;
+    background-color: #E6007A;
+    border: 2px solid transparent;
+    transition: all ease .6s;
+}
+.img-box .content p a:hover{
+    border: 2px solid #E6007A;
+    background-color: #13072E;
+    color: #E6007A;
+}
+
 
 .form-box {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color:white;
     backdrop-filter: blur(40px);
     padding: 40px;
     width: 50%;
+    border-radius: 10px;
 }
 
 .form-box h2 {
@@ -95,7 +186,7 @@ body {
     padding: 15px;
     font-size: 15px;
     color: #616161;
-    border: 2px solid transparent;
+    border: 2px solid #13072E;
     transition: all 0.4s ease;
 }
 

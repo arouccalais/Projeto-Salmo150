@@ -76,6 +76,9 @@ function registrar(req, res) {
     }
 }
 
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
