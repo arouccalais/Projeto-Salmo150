@@ -140,17 +140,25 @@ body {
     margin-top: -30px;
 }
 
-.menu {
-    padding-top: 30px;
-    width: 50%;
-    text-align: right;
+header {
+    height: 150px;
 }
 
-.menu a {
+.menu {
+    display: flex;
+    align-items: center; /* Alinha os itens verticalmente */
+    justify-content: flex-end; /* Alinha os itens à direita */
+    margin-left: auto; /* Adiciona margem à esquerda para empurrar os elementos para a direita */
+    margin-right: -60px; /* Adiciona uma margem à direita para separar os elementos da borda */
+}
+
+.menu a,
+.menu button {
+    margin-right: 25px; /* Espaçamento entre os elementos */
     color: white;
     text-decoration: none;
     font-weight: bold;
-    margin-right: 15px;
+    cursor: pointer;
 }
 
 .menu button {
@@ -158,7 +166,6 @@ body {
     background-color: transparent;
     padding: 10px 20px;
     font-size: 16px;
-    cursor: pointer;
     color: white;
 }
 
@@ -396,3 +403,13 @@ h3 {
     margin-top: 20px;
     font-size: 14px;
 }
+
+.card-sobre .imagem-objetivo {
+    max-width: 50%; 
+    height: auto; 
+    border-radius: 20px;
+    margin-left: 20px;
+    margin-top: 25px; /* Aumente o valor da margem superior para mover as imagens para baixo */
+}
+
+

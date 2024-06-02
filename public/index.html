@@ -7,6 +7,7 @@
     <title>Ação Social | Salmo 150</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/fale-conosco.css">
+    <link rel="stylesheet" href="./css/botao.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 </head>
 
@@ -21,9 +22,8 @@
                 <a href="#home">Home</a>
                 <a href="#quemsomos">Sobre nós</a>
                 <a href="#projeto">Projeto</a>
-                <a href="cadastro.html">
-                    <button><a href="./cadastro.html">Faça parte</a></button>
-                </a>
+                <a href="#sustentabilidade">Sustentabilidade</a>
+                <button onclick="window.location.href='./cadastro.html'">Faça parte</button>
 
             </div>
         </div>
@@ -40,7 +40,6 @@
                     3 Louvai ao Senhor com o som de <br>trombeta; louvai-o com o saltério e a <br>harpa. <br>
                     4 Louvai-o com o tamborim e a dança,<br>louvai-o com instrumentos de cordas e <br>com órgãos.
                 </h3>
-                <!-- Adicionei um ID ao botão para selecioná-lo com JavaScript -->
                 <button id="scrollBtn" class="conhecamais">
                     Conheça mais sobre nosso Projeto
                 </button>
@@ -167,6 +166,39 @@
 
     </section>
 
+    <section class="sustentabilidade" id="sustentabilidade">
+        <div>
+            <h2 class="sobre">Sustentabilidade</h2>
+            <p class="texto-sobre">
+                Nosso projeto está alinhado com os Objetivos de Desenvolvimento Sustentável da ONU, contribuindo para
+                uma educação de qualidade e promovendo paz, justiça e instituições eficazes.
+            </p>
+        </div>
+        <div class="cards-align">
+            <div class="card-sobre">
+                <img class="imagem-objetivo" src="./assets/img/onu-4.png" alt="Objetivo 4">
+                <div class="card-content-sobre">
+                    <h2>Objetivo 4</h2>
+                    <p>
+                        Educação de qualidade: Assegurar a educação inclusiva e equitativa de qualidade, e promover
+                        oportunidades de aprendizagem ao longo da vida para todos.
+                    </p>
+                </div>
+            </div>
+            <div class="card-sobre">
+                <img class="imagem-objetivo" src="./assets/img/onu-16.jpg" alt="Objetivo 16">
+                <div class="card-content-sobre">
+                    <h2>Objetivo 16</h2>
+                    <p>
+                        Paz, justiça e instituições eficazes: Promover sociedades pacíficas e inclusivas para o
+                        desenvolvimento sustentável, proporcionar o acesso à justiça para todos e construir instituições
+                        eficazes, responsáveis e inclusivas em todos os níveis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div id="fade" class="hide"></div>
     <div id="modal" class="hide">
         <div class="modal-header">
@@ -219,6 +251,24 @@
         </div>
     </footer>
 
+    <div id="btnTop" onclick="clickMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <menu id="itens">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#quemsomos">QUEM SOMOS</a></li>
+                <li><a href="#projeto">PROJETOS</a></li>
+                <li><a href="#fale-conosco">FALE CONOSCO</a></li>
+            </ul>
+        </menu>
+    </div>
+
+    <div id="bgColorJs" onclick="clickMenu()"></div>
+
+
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -238,6 +288,50 @@
                 behavior: 'smooth' // Faz a rolagem ser suave
             });
         });
+
+        // Adiciona um ouvinte de evento de clique a todos os links do menu
+        document.querySelectorAll('.menu a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Impede o comportamento padrão do link (navegação)
+                e.preventDefault();
+
+                // Obtém o ID da seção de destino do atributo href do link
+                const sectionId = this.getAttribute('href');
+
+                // Obtém a posição da seção de destino em relação ao topo da página
+                const sectionPosition = document.querySelector(sectionId).offsetTop;
+
+                // Faz a rolagem suave até a posição da seção de destino
+                window.scrollTo({
+                    top: sectionPosition,
+                    behavior: 'smooth' // Faz a rolagem ser suave
+                });
+            });
+        });
+
+        const btn = document.getElementById("btnTop");
+function ocultar() {
+    if (window.scrollY > 20) {
+        btn.style.display = "flex"
+    } else {
+        btn.style.display = "none"
+    }
+}
+ocultar()
+
+document.addEventListener('scroll', ocultar)
+
+function clickMenu() {
+    if (itens.style.display == 'block' && bgColorJs.style.display == 'block') {
+        itens.style.display = 'none'
+        bgColorJs.style.display = 'none'
+    } else {
+        itens.style.display = 'block'
+        bgColorJs.style.display = 'block'
+    }
+}
+
+
 
 
         function mostrarModal() {
