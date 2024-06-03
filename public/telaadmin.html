@@ -1,25 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="./css/telaadmin.css">
-   
+
 </head>
+
 <body>
     <div class="dashboard">
         <h1>Dashboard de Alunos</h1>
         <table class="table">
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
-                    <th>Senha</th>
+                    <th id="nome">Nome</th>
+                    <th id="telefone">Telefone</th>
+                    <th id="email">Email</th>
                 </tr>
             </thead>
         </table>
+        <div id="exibirResultado"></div>
     </div>
 </body>
+
 </html>
+
+<script>
+    const listaUsuario = [];
+    fetch("/usuarios/dashboard", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then(function (res) {
+        return res.json()
+    }).then(function (data) {
+        for(let i = 0; i < data.length; i++){
+            listaUsuario.push(data[i])
+            exibirResultado.innerHTML += `<table class="table">
+            <thead>
+                <tr>
+                    <th id="nome">${data[i].nome}</th>
+                    <th id="telefone">${data[i].telefone}</th>
+                    <th id="email"> ${data[i].email}</th>
+                </tr>
+            </thead>
+        </table>`
+        }
+        
+        
+    })
+</script>

@@ -28,8 +28,17 @@ function registrar(score, fkUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function dashboard(nome, telefone, email) {
+    var instrucaoSQL = `
+    SELECT nome, telefone, email FROM usuario;`
+    
+    console.log("Executando a instrução SQL: \n" + instrucaoSQL);
+    return database.executar(instrucaoSQL);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    registrar
+    registrar,
+    dashboard
 };
