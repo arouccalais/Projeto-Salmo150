@@ -36,9 +36,24 @@ function dashboard(nome, telefone, email) {
     return database.executar(instrucaoSQL);
 }
 
+function ranking(){
+    var instrucaoSQL = `
+    SELECT 
+            usuario.nome AS Nome,
+            pontuacao.score
+        FROM usuario
+            INNER JOIN pontuacao
+                ON pontuacao.fkUsuario = usuario.idUsuario
+        `
+
+        console.log("Executando a instrução SQL: \n" + instrucaoSQL);
+        return database.executar(instrucaoSQL);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     registrar,
-    dashboard
+    dashboard,
+    ranking
 };

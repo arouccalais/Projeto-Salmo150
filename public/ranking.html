@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking de pontuação quiz</title>
+    <link rel="stylesheet" href="./css/ranking.css">
+
+</head>
+
+<body>
+    <div class="dashboard">
+        <h1>Ranking de pontuação do quiz</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th id="nome">Nome</th>
+                    <th id="pontuacao">Pontuação</th>
+                </tr>
+            </thead>
+        </table>
+        <div id="exibirResultado"></div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const pontuacao = [];
+    fetch("/ranking/ranking", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then(function (res) {
+        return res.json()
+    }).then(function (data) {
+        console.log(data)
+        for(let i = 0; i < data.length; i++){
+            pontuacao.push(data[i])
+            exibirResultado.innerHTML += ` <table class="table">
+            <thead>
+                <tr>
+                    <th id="nome">${pontuacao[i].Nome}</th>
+                    <th id="pontuacao">${pontuacao[i].score}</th>
+                </tr>
+            </thead>
+        </table>
+        `
+        }
+        
+        
+    })
+</script>

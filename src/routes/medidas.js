@@ -3,12 +3,9 @@ var router = express.Router();
 
 var medidaController = require("../controllers/medidaController");
 
-router.get("/ultimas/:idAquario", function (req, res) {
-    medidaController.buscarUltimasMedidas(req, res);
+// Rota para obter as pontuações de um usuário específico
+router.get("/:idUsuario", function (req, res) {
+    medidaController.buscarPontuacoesUsuario(req, res);
 });
-
-router.get("/tempo-real/:idAquario", function (req, res) {
-    medidaController.buscarMedidasEmTempoReal(req, res);
-})
 
 module.exports = router;

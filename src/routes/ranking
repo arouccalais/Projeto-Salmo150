@@ -1,0 +1,11 @@
+var express = require("express");
+var router = express.Router();
+
+var usuarioController = require("../controllers/usuarioController");
+
+router.get("/ranking", function(req,res){
+    usuarioController.ranking(req,res)
+})
+
+
+module.exports = router;
