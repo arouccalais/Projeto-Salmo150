@@ -8,7 +8,6 @@
     <title>Dashboards</title>
     
     <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -20,6 +19,19 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <div class="sidebar">
+        <h2>Projeto Salmo 150</h2>
+        <nav>
+            <ul>
+                <li><a href="sidebar.html" id="inicio-link">Tela de Início</a></li>
+                <li><a href="./memoria.html">Jogo de Memória</a></li>
+                <li><a href="./quiz.html">Quiz</a></li>
+                <li><a href="./telaadmin.html">Tela admin</a></li>
+                <li><a href="./ranking.html">Ranking geral</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <div class="dash">
         <div id="alerta"></div>
         <div class="btns-dash" id="btnPontuacao">
@@ -28,6 +40,8 @@
             <canvas id="pontuacaoChart"></canvas>
         </div>
     </div>
+
+
     
     <script>
         window.onload = exibirPontuacoesUsuario;
@@ -68,7 +82,7 @@
                 datasets: [{
                     label: 'Pontuação',
                     data: scores,
-                    backgroundColor: 'rgba(0, 0, 255, 0.473)',
+                    backgroundColor: 'rgba(147,112,219)',
                     borderColor: 'rgba(0, 0, 255, 0.473)',
                     borderWidth: 1
                 }]
@@ -81,7 +95,7 @@
                     scales: {
                         y: {
                             beginAtZero: true,
-                            max: 9 // Valor máximo definido em 9
+                            max: 8 // Valor máximo definido em 9
                         }
                     }
                 }

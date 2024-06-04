@@ -1,5 +1,50 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  background-color: #11113A;
+  color: #FFFFFF;
+  font-family: 'Press Start 2P', cursive;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: #13072E;
+  padding: 20px;
+  width: 250px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.sidebar h2 {
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin: 20px 0;
+}
+
+.sidebar nav ul li a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  transition: background-color 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+  background-color: #171769;
+  border-radius: 5px;
+}
 
 * {
   margin: 0;
@@ -14,7 +59,6 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-image: url('../assets/img/background.jpg');
   background-size: cover;
   min-height: 100vh;
   align-items: center;
@@ -37,7 +81,7 @@ header {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 15px;
   width: 100%;
   max-width: 1200px;
