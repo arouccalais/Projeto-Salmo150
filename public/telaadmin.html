@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="./css/telaadmin.css">
-
 </head>
 
 <body>
@@ -33,36 +32,33 @@
                     <th id="email">Email</th>
                 </tr>
             </thead>
+            <tbody id="exibirResultado"></tbody>
         </table>
-        <div id="exibirResultado"></div>
     </div>
+
+    <script>
+        const listaUsuario = [];
+        fetch("/usuarios/dashboard", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(function (res) {
+            return res.json();
+        }).then(function (data) {
+            const exibirResultado = document.getElementById('exibirResultado');
+            data.forEach(item => {
+                listaUsuario.push(item);
+                exibirResultado.innerHTML += `
+                    <tr>
+                        <td>${item.nome}</td>
+                        <td>${item.telefone}</td>
+                        <td>${item.email}</td>
+                    </tr>
+                `;
+            });
+        });
+    </script>
 </body>
 
 </html>
-
-<script>
-    const listaUsuario = [];
-    fetch("/usuarios/dashboard", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then(function (res) {
-        return res.json()
-    }).then(function (data) {
-        for(let i = 0; i < data.length; i++){
-            listaUsuario.push(data[i])
-            exibirResultado.innerHTML += `<table class="table">
-            <thead>
-                <tr>
-                    <th id="nome">${data[i].nome}</th>
-                    <th id="telefone">${data[i].telefone}</th>
-                    <th id="email"> ${data[i].email}</th>
-                </tr>
-            </thead>
-        </table>`
-        }
-        
-        
-    })
-</script>

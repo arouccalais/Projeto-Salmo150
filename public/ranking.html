@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranking de pontuação quiz</title>
     <link rel="stylesheet" href="./css/ranking.css">
-
 </head>
 
 <body>
@@ -23,7 +22,6 @@
         </nav>
     </div>
     
-
     <div class="dashboard">
         <h1>Ranking de pontuação do quiz</h1>
         <table class="table">
@@ -33,37 +31,33 @@
                     <th id="pontuacao">Pontuação</th>
                 </tr>
             </thead>
+            <tbody id="exibirResultado"></tbody>
         </table>
-        <div id="exibirResultado"></div>
     </div>
+
+    <script>
+        const pontuacao = [];
+        fetch("/ranking/ranking", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(function (res) {
+            return res.json()
+        }).then(function (data) {
+            console.log(data)
+            const exibirResultado = document.getElementById('exibirResultado');
+            data.forEach(item => {
+                pontuacao.push(item);
+                exibirResultado.innerHTML += `
+                    <tr>
+                        <td>${item.Nome}</td>
+                        <td>${item.score}</td>
+                    </tr>
+                `;
+            });
+        });
+    </script>
 </body>
 
 </html>
-
-<script>
-    const pontuacao = [];
-    fetch("/ranking/ranking", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then(function (res) {
-        return res.json()
-    }).then(function (data) {
-        console.log(data)
-        for(let i = 0; i < data.length; i++){
-            pontuacao.push(data[i])
-            exibirResultado.innerHTML += ` <table class="table">
-            <thead>
-                <tr>
-                    <th id="nome">${pontuacao[i].Nome}</th>
-                    <th id="pontuacao">${pontuacao[i].score}</th>
-                </tr>
-            </thead>
-        </table>
-        `
-        }
-        
-        
-    })
-</script>

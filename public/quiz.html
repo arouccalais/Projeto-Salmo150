@@ -15,7 +15,7 @@
                 <li><a href="./memoria.html">Jogo de Memória</a></li>
                 <li><a href="./quiz.html">Quiz</a></li>
                 <li><a href="./telaadmin.html">Tela admin</a></li>
-                <li><a href="./ranking.html">Ranking quiz</a></li>
+                <li><a href="./ranking.html">Ranking geral</a></li>
             </ul>
         </nav>
     </div>
@@ -30,6 +30,9 @@
 </body>
 <script>
     const quizContainer = document.getElementById('quiz-container');
+
+    // Define os dados do quiz como uma lista de objetos, cada um representando uma pergunta com opções e a resposta correta.
+    
     const quizData = [
         { question: 'Qual é a nota representada pela letra G?', options: ['RÉ', 'SOL', 'SI', 'LÁ'], answer: 'SOL' },
         { question: 'A nota SI é representada por qual letra?', options: ['J', 'D', 'A', 'B'], answer: 'B' },
@@ -40,10 +43,11 @@
         { question: 'A nota FÁ é representada por qual letra?', options: ['A', 'B', 'F', 'G'], answer: 'F' },
         { question: 'Qual é a nota representada pela letra A?', options: ['DÓ', 'LÁ', 'MI', 'FÁ'], answer: 'LÁ' },
     ];
-
+    //Inicializa os índices de perguntas e a pontuação com valores zero.
     let currentQuestionIndex = 0;
     let scoreVar = 0;
-
+ 
+    // carrega a pergunta e suas opções
     function loadQuestion() {
         const currentQuestion = quizData[currentQuestionIndex];
         quizContainer.innerHTML = `
@@ -91,7 +95,7 @@
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Score registered successfully:', data);
+            console.log('Pontuação registrada com sucesso', data);
         })
         .catch((error) => {
             console.error('Error:', error);
