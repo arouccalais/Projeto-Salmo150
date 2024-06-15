@@ -44,6 +44,7 @@ function ranking(){
         FROM usuario
             INNER JOIN pontuacao
                 ON pontuacao.fkUsuario = usuario.idUsuario
+                ORDER BY pontuacao.score desc;
         `
 
         console.log("Executando a instrução SQL: \n" + instrucaoSQL);

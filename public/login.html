@@ -123,7 +123,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idUsuario;
-                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios); // Certifique-se de que este campo existe
+                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios); 
 
                     setTimeout(function () {
                         window.location = "./sidebar.html";
@@ -135,7 +135,6 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    // Certifique-se de que 'finalizarAguardar' é uma função definida
                     finalizarAguardar(texto);
                 });
             }

@@ -32,7 +32,6 @@
     const quizContainer = document.getElementById('quiz-container');
 
     // Define os dados do quiz como uma lista de objetos, cada um representando uma pergunta com opções e a resposta correta.
-    
     const quizData = [
         { question: 'Qual é a nota representada pela letra G?', options: ['RÉ', 'SOL', 'SI', 'LÁ'], answer: 'SOL' },
         { question: 'A nota SI é representada por qual letra?', options: ['J', 'D', 'A', 'B'], answer: 'B' },
@@ -43,6 +42,7 @@
         { question: 'A nota FÁ é representada por qual letra?', options: ['A', 'B', 'F', 'G'], answer: 'F' },
         { question: 'Qual é a nota representada pela letra A?', options: ['DÓ', 'LÁ', 'MI', 'FÁ'], answer: 'LÁ' },
     ];
+    
     //Inicializa os índices de perguntas e a pontuação com valores zero.
     let currentQuestionIndex = 0;
     let scoreVar = 0;
@@ -60,21 +60,23 @@
                 `).join('')}
             </div>
         `;
-
+    //  ouvinte de evento que espera o botão ser clicado
         document.querySelectorAll('.quiz-options button').forEach(button => {
             button.addEventListener('click', checkAnswer);
         });
     }
 
     function checkAnswer(event) {
+        // verificar a resposta
         const selectedAnswer = event.target.getAttribute('data-answer');
+        // se  a resposta ta certa aumenta a pontuação
         if (selectedAnswer === quizData[currentQuestionIndex].answer) {
             scoreVar++;
         }
-        currentQuestionIndex++;
-        if (currentQuestionIndex < quizData.length) {
+        currentQuestionIndex++; // passa para próxima pergunta
+        if (currentQuestionIndex < quizData.length) { // se ainda tiver pergunta carrega
             loadQuestion();
-        } else {
+        } else { 
             quizContainer.innerHTML = `<div class="quiz-result">Você acertou ${scoreVar} de ${quizData.length} perguntas!</div>`;
             sendScoreToServer();
         }
